@@ -106,6 +106,10 @@ int main(int argc,const char ** argv)
             ExtractArg(argv[i],"?",ret) ||
             ExtractArg(argv[i],"--help",ret)) && !ret)
         {
+#ifdef TEST
+            if(test)
+                test_pcre(c);
+#endif
             printUsage(ProgramName(argv[0]));
             return 1;
         }else if((ExtractArg(argv[i],"-t",ret) || ExtractArg(argv[i],"-test",ret)) && !ret){

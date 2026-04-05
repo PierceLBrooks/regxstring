@@ -14,7 +14,7 @@
 #endif
 
 //allocator choice
-#ifndef __GNUC__ 
+#if !defined(__GNUC__) || (__GNUC__ < 3 || (__GNUC__ == 3 && __GNUC_MINOR__ < 4)) || (defined(__clang_major__) && __clang_major__ >= 5)
 #   define __DZ_ALLOC       std::allocator
 #else
 #   ifndef NDEBUG

@@ -75,17 +75,23 @@ static void test_pcre(int c)
     CRegxString regxstr;
     std::string regx;
     while(std::getline(cin,regx)){
-        regx = pre_handle(regx);
-        cout<<"Test regx : "<<regx<<endl;
-        pcre * re = pcre_compile_DZ(regx);
-        if (!re)
+        if (regx.empty()){
             continue;
+        }
+        regx = pre_handle(regx);
+        pcre * re = pcre_compile_DZ(regx);
+        if (!re){
+            continue;
+        }
+        cout<<"Test regx : "<<regx<<endl;
         regxstr.ParseRegx(regx.c_str());
         for(int i = 0;i < c;++i){
             regxstr.RandString();
             const std::string & str = regxstr.LastString();
-            if(!pcre_exec_DZ(str,re))
+            cout<<str<<endl;
+            if(!pcre_exec_DZ(str,re)){
                 cerr<<str<<endl;
+            }
         }
         cout<<endl;
         pcre_free(re);
