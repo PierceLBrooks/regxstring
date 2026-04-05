@@ -1,0 +1,3 @@
+[submodule "pcre1"]
+	path = pcre1
+	url = https://github.com/PierceLBrooks/pcre1.git

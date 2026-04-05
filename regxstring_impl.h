@@ -9,7 +9,9 @@
 
 #define _DZ_DEBUG 0
 
+#ifndef _MEM_LEAK
 #define _MEM_LEAK 0
+#endif
 
 //allocator choice
 #ifndef __GNUC__ 
